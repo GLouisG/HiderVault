@@ -12,7 +12,12 @@ class User:
     '''
     User.hider_accs.append(self)
 class Credentials:
-   credentials = []
-   def __init__(self, user_name, user_password, user_site,):
-      self.hider_name = user_name
-      self.hider_password = user_password
+   credentials_list = []
+   def __init__(self, user_name, user_password, user_site, owner):
+      self.user_name = user_name
+      self.user_password = user_password
+      self.user_site = user_site
+      self.owner = owner
+   def save_credential(self):
+     Credentials.credentials_list.append (self)
+     
