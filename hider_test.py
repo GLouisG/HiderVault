@@ -1,6 +1,8 @@
 import unittest
 from hider import User
 from hider import Credentials
+import pyperclip
+
 class TestUser(unittest.TestCase):
   def setUp(self):
     self.new_user = User("Guy", "abcdef")
@@ -76,6 +78,15 @@ class  TestCredentials(unittest.TestCase):
        credential_exists = Credentials.credential_exists("Facebook")
 
        self.assertTrue(credential_exists)   
+    def test_copy_password(self):
+        '''
+        Test to confirm that we are copying the password
+        '''
 
+        self.new_credential.save_credential()
+        
+        Credentials.copy_password("twitter")
+
+        self.assertEqual(self.new_credential.user_password, pyperclip.paste())
 if __name__ == '__main__':
     unittest.main()

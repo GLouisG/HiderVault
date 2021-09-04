@@ -1,5 +1,6 @@
 import string
 import random
+import pyperclip 
 
 class User:
   hider_accs = []
@@ -58,8 +59,8 @@ class Credentials:
          return True 
      return False   
 
-  #  @classmethod
-  #  def copy_email(cls, platform):
-  #   found_credential = Credentials.search_by_site(platform)
-  #   pyperclip.copy(found_credential.user_password) 
+   @classmethod
+   def copy_password(cls, platform):
+    found_credential = Credentials.search_by_site(platform)
+    pyperclip.copy(found_credential.user_password) 
   
