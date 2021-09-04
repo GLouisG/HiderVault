@@ -46,7 +46,28 @@ class  TestCredentials(unittest.TestCase):
 
             self.new_credential.delete_credential()
             self.assertEqual(len(Credentials.credentials_list),1)
-    def test_display_creds(self):
-        self.assertEqual(Credentials.display_credentials(),Credentials.credentials_list)        
+    # def test_display_creds(self):
+    #     self.assertEqual(Credentials.display_credentials(),Credentials.credentials_list)    
+
+            '''
+        test to check if we can find a contact by phone number and display information
+        '''
+    def test_display_credentials(self):
+        self.new_credential.save_credential()
+        test_credential = Credentials("Chap", "JollyOld", "Facebook", "Twit")  
+        test_credential.save_credential()
+
+        found_credentials = Credentials.display_credentials("Twit")
+
+        self.assertEqual(found_credentials, Credentials.credentials_list)
+    def test_search_by_site(self):
+        self.new_credential.save_credential()
+        test_credential = Credentials("Chap", "JollyOld", "Facebook", "Twit")  
+        test_credential.save_credential()
+
+        found_credentials = Credentials.search_by_site("Facebook")
+
+        self.assertEqual(found_credentials.user_site, test_credential.user_site)    
+        
 if __name__ == '__main__':
     unittest.main()

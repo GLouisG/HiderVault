@@ -25,6 +25,25 @@ class Credentials:
      To delete credentials
      '''
      Credentials.credentials_list.remove(self)  
+  #  @classmethod
+  #  def display_credentials(cls):
+  #    return cls.credentials_list
+
    @classmethod
-   def display_credentials(cls):
-     return cls.credentials_list
+   def display_credentials(cls, owner):
+        searlist = []
+        for credential in cls.credentials_list:
+            if credential.owner == owner:
+                searlist.append(credential)
+        return searlist   
+
+   @classmethod
+   def search_by_site(cls, search):
+     for credential in cls.credentials_list:
+       if credential.user_site == search:
+         return credential 
+  #  @classmethod
+  #  def search_by_owner(cls, search):
+  #    for credential in cls.credentials_list:
+  #      if credential.owner == search:
+  #        return credential      
