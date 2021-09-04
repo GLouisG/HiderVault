@@ -1,3 +1,6 @@
+import string
+import random
+
 class User:
   hider_accs = []
   '''
@@ -42,6 +45,14 @@ class Credentials:
      for credential in cls.credentials_list:
        if credential.user_site == search:
          return credential 
+   
+   def password_gen(length):
+    # choose from all lowercase letter
+    letters = string.ascii_lowercase
+    result_str = ''.join(random.choice(letters) for i in range(length))
+    return result_str      
+
+
   #  @classmethod
   #  def search_by_owner(cls, search):
   #    for credential in cls.credentials_list:

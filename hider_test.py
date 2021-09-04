@@ -60,14 +60,14 @@ class  TestCredentials(unittest.TestCase):
         found_credentials = Credentials.display_credentials("Twit")
 
         self.assertEqual(found_credentials, Credentials.credentials_list)
-    def test_search_by_site(self):
+    def test_password_gen(self):
         self.new_credential.save_credential()
         test_credential = Credentials("Chap", "JollyOld", "Facebook", "Twit")  
         test_credential.save_credential()
 
-        found_credentials = Credentials.search_by_site("Facebook")
+        new_pass = Credentials.password_gen(5)
 
-        self.assertEqual(found_credentials.user_site, test_credential.user_site)    
+        self.assertEqual(len(new_pass), 5)    
         
 if __name__ == '__main__':
     unittest.main()
