@@ -51,8 +51,12 @@ class Credentials:
     letters = string.ascii_lowercase
     result_str = ''.join(random.choice(letters) for i in range(length))
     return result_str      
-
-
+   @classmethod
+   def credential_exists(cls, site):
+     for credential in cls.credentials_list:
+       if credential.user_site == site:
+         return True 
+     return False   
   #  @classmethod
   #  def search_by_owner(cls, search):
   #    for credential in cls.credentials_list:

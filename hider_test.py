@@ -68,6 +68,14 @@ class  TestCredentials(unittest.TestCase):
         new_pass = Credentials.password_gen(5)
 
         self.assertEqual(len(new_pass), 5)    
-        
+    def test_credential_exists(self):
+       self.new_credential.save_credential()
+       test_credential = Credentials("Chap", "JollyOld", "Facebook", "Twit")  
+       test_credential.save_credential()
+
+       credential_exists = Credentials.credential_exists("Facebook")
+
+       self.assertTrue(credential_exists)   
+
 if __name__ == '__main__':
     unittest.main()
