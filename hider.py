@@ -57,8 +57,9 @@ class Credentials:
        if credential.user_site == site:
          return True 
      return False   
+
   #  @classmethod
-  #  def search_by_owner(cls, search):
-  #    for credential in cls.credentials_list:
-  #      if credential.owner == search:
-  #        return credential      
+  #  def copy_email(cls, platform):
+  #   found_credential = Credentials.search_by_site(platform)
+  #   pyperclip.copy(found_credential.user_password) 
+  
