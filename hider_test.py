@@ -39,6 +39,14 @@ class  TestCredentials(unittest.TestCase):
       test_credential = Credentials("Chap", "JollyOld", "Facebook", "Twit")  
       test_credential.save_credential()
       self.assertEqual(len(Credentials.credentials_list), 2)  
+    def test_delete_cred(self):
+            self.new_credential.save_credential()
+            test_credential = Credentials("Chap", "JollyOld", "Facebook", "Twit")  
+            test_credential.save_credential()
 
+            self.new_credential.delete_credential()
+            self.assertEqual(len(Credentials.credentials_list),1)
+    def test_display_creds(self):
+        self.assertEqual(Credentials.display_credentials(),Credentials.credentials_list)        
 if __name__ == '__main__':
     unittest.main()

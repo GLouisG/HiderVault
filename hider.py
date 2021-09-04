@@ -20,4 +20,11 @@ class Credentials:
       self.owner = owner
    def save_credential(self):
      Credentials.credentials_list.append (self)
-     
+   def delete_credential(self):
+     '''
+     To delete credentials
+     '''
+     Credentials.credentials_list.remove(self)  
+   @classmethod
+   def display_credentials(cls):
+     return cls.credentials_list
