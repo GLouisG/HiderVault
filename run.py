@@ -61,6 +61,7 @@ def main():
           tiny_code = input().lower()
           if tiny_code=="ac":
             print("Do you want to use a generated password(y/n)")
+            print("type _leave_ to leave")
             reply = input().lower()
             if reply == "y":
               print("New Account")
@@ -74,7 +75,7 @@ def main():
                 print(f"your password is {upass}")
               else:
                 print("please enter a number")  
-              generated_pass = ""
+              
               print("Enter Platform/website...")
               usite = input()
               uowner = input_hname
@@ -82,7 +83,24 @@ def main():
               print ('\n')
               print(f"New Account {uname} for {usite} created")
               print ('\n')
+            elif reply == "n" :
+              print("New Account")
+              print("-"*10)
+              print("Enter Username...")
+              uname = input()
+              print("Enter Password...")
+              upass = input()
+              print("Enter Platform/website...")
+              usite = input()
+              uowner = input_hname
+              save_cred(create_cred(uname,upass,usite,uowner)) # create and save new contact.
+              print ('\n')
+              print(f"New Account {uname} for {usite} created")
+              print ('\n')
+            elif reply == "_leave_":
+              break
             
+              
         else :
           print("Your username or password is incorrect")
 
