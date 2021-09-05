@@ -30,12 +30,12 @@ def pass_gen(length):
 def cred_exists(site):
   return Credentials.credential_exists(site)
 def copy_pass(platform):
-  return Credentials.copy_pass(platform)
+  return Credentials.copy_password(platform)
 
 
 def main():
+  print("Hello welcome to HiderVault")
   while  True:
-    print("Hello welcome to HiderVault")
     print("Use the following codes ca-Create Account lg-Log In ex-Exit")
 
     short_code = input().lower()
@@ -58,7 +58,7 @@ def main():
       input_hpassword = input() 
       for user in User.hider_accs:
         while user.hider_name == input_hname and user.hider_password == input_hpassword:
-          print("Please use the following codes ac-add credential dc-display credentials del-delete credentials ex-exit sc-search by site")
+          print("Please use the following codes ac-add credential dc-display credentials del-delete credentials ex-exit cp-copy password")
           tiny_code = input().lower()
           if tiny_code=="ac":
             print("type _leave_ to leave")
@@ -79,11 +79,12 @@ def main():
                 print("please enter a number")  
               
               print("Enter Platform/website...")
-              usite = input()
+              usite = input().lower()
               uowner = input_hname
               save_cred(create_cred(uname,upass,usite,uowner)) # create and save new contact.
               print ('\n')
               print(f"New Account {uname} for {usite} created")
+              print("--**"*34)
               print ('\n')
             elif reply == "n" :
               print("New Account")
@@ -93,11 +94,12 @@ def main():
               print("Enter Password...")
               upass = input()
               print("Enter Platform/website...")
-              usite = input()
+              usite = input().lower
               uowner = input_hname
               save_cred(create_cred(uname,upass,usite,uowner)) # create and save new contact.
               print ('\n')
               print(f"New Account {uname} for {usite} created")
+              print("--**"*34)
               print ('\n')
             elif reply == "_leave_":
               break
@@ -121,21 +123,29 @@ def main():
             print("Which platform's account do you want to delete")
             plat_todel= input()
             del_cred(site_search(plat_todel))
+            print("All Done")
+            print("--**"*34)
             
-
-
-          elif tiny_code=="sc":
-            print()  
+          elif tiny_code=="cp": 
+            print("Which site/platform password do you want to copy")
+            cp_site = input()
+            copy_pass(cp_site) 
+            print("The password has been copied to your clipboard") 
+            print("--**"*34)
           elif tiny_code=="ex": 
             break  
-
-
-
+         
+        # if len(User.hider_accs) == 0:
+        #      print("DOESN'T EXIST")  
+        if user.hider_name != input_hname or user.hider_password != input_hpassword:  
+           print("YOUR USERNAME OR PASSWORD IS INCORRECT")
+           print("--**"*34)
         else :
-          print("Your username or password is incorrect")
-
-    else :
-      print("Sorry I didn't get that kindly use the codes")       
+          print("Sorry I didn't get that kindly use the codes")
+          print("--**"*34)
+    elif short_code == 'ex':
+      break
+         
 
 if __name__ == '__main__':
 
