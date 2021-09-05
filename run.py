@@ -50,9 +50,10 @@ def main():
       user_saver(create_user(hname, hpassword))
       continue
     elif short_code == 'lg':
-      print ("Please enter your usename---")
-      print ("If you wish to return press enter only")
+      print ("Please enter your username---")
+      print ("If you wish to return press enter twice only")
       input_hname = input()
+      print ("If you wish to return just press enter once only")
       print("What is your vault password?...")
       input_hpassword = input() 
       for user in User.hider_accs:
@@ -60,8 +61,9 @@ def main():
           print("Please use the following codes ac-add credential dc-display credentials tc-delete credentials ex-exit sc-search by site")
           tiny_code = input().lower()
           if tiny_code=="ac":
-            print("Do you want to use a generated password(y/n)")
             print("type _leave_ to leave")
+            print("Do you want to use a generated password(y/n)")
+            
             reply = input().lower()
             if reply == "y":
               print("New Account")
@@ -100,7 +102,30 @@ def main():
             elif reply == "_leave_":
               break
             
-              
+
+          elif tiny_code=="dc":
+            if display_creds(hname):
+                                   print("Here is a list of all your credentials")
+                                   print('\n')
+ 
+                                   for cred in display_creds(hname):
+                                           print(f"Username:{cred.user_name} Password:{cred.user_password} Platform:{cred.user_site}")
+                                   print("--**"*10)
+                                   print('\n')
+            else:
+                                   print('\n')
+                                   print("You dont seem to have any contacts saved yet")
+                                   print("--**"*10)
+                                   print('\n')
+          elif tiny_code=="tc":
+            print()
+          elif tiny_code=="sc":
+            print()  
+          elif tiny_code=="ex": 
+            break  
+
+
+
         else :
           print("Your username or password is incorrect")
 
