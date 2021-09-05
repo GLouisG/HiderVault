@@ -58,7 +58,7 @@ def main():
       input_hpassword = input() 
       for user in User.hider_accs:
         while user.hider_name == input_hname and user.hider_password == input_hpassword:
-          print("Please use the following codes ac-add credential dc-display credentials tc-delete credentials ex-exit sc-search by site")
+          print("Please use the following codes ac-add credential dc-display credentials del-delete credentials ex-exit sc-search by site")
           tiny_code = input().lower()
           if tiny_code=="ac":
             print("type _leave_ to leave")
@@ -110,15 +110,20 @@ def main():
  
                                    for cred in display_creds(hname):
                                            print(f"Username:{cred.user_name} Password:{cred.user_password} Platform:{cred.user_site}")
-                                   print("--**"*10)
+                                   print("--**"*34)
                                    print('\n')
             else:
                                    print('\n')
                                    print("You dont seem to have any contacts saved yet")
-                                   print("--**"*10)
+                                   print("--**"*34)
                                    print('\n')
-          elif tiny_code=="tc":
-            print()
+          elif tiny_code=="del":
+            print("Which platform's account do you want to delete")
+            plat_todel= input()
+            del_cred(site_search(plat_todel))
+            
+
+
           elif tiny_code=="sc":
             print()  
           elif tiny_code=="ex": 
