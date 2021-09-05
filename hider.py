@@ -16,6 +16,9 @@ class User:
     '''
     User.hider_accs.append(self)
 class Credentials:
+   '''
+   class that acts as a blueprint for credentials
+   '''
    credentials_list = []
    def __init__(self, user_name, user_password, user_site, owner):
       self.user_name = user_name
@@ -23,6 +26,9 @@ class Credentials:
       self.user_site = user_site
       self.owner = owner
    def save_credential(self):
+     '''
+        To save credentials
+     '''
      Credentials.credentials_list.append (self)
    def delete_credential(self):
      '''
@@ -35,6 +41,9 @@ class Credentials:
 
    @classmethod
    def display_credentials(cls, c_owner):
+        '''
+        To display credentials
+        '''
         searlist = []
         for credential in cls.credentials_list:
             if credential.owner == c_owner:
@@ -43,17 +52,24 @@ class Credentials:
 
    @classmethod
    def search_by_site(cls, search):
+     '''
+        To locate credentials by site
+     '''
      for credential in cls.credentials_list:
        if credential.user_site == search:
          return credential 
    
    def password_gen(length):
-    # choose from all lowercase letter
+    
+    # generate passwords for credentials
     letters = string.ascii_lowercase
     result_str = ''.join(random.choice(letters) for i in range(length))
     return result_str      
    @classmethod
    def credential_exists(cls, site):
+     '''
+        To confirm existence of credentials
+     '''
      for credential in cls.credentials_list:
        if credential.user_site == site:
          return True 
@@ -61,6 +77,9 @@ class Credentials:
 
    @classmethod
    def copy_password(cls, platform):
+    '''
+        To copy credentials password
+     ''' 
     found_credential = Credentials.search_by_site(platform)
     pyperclip.copy(found_credential.user_password) 
   

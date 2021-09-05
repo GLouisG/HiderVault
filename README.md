@@ -1,4 +1,4 @@
-# GithubSearch
+# HiderVault
 
 ## Authors and Contributors
 - Louis Gacho  
@@ -9,7 +9,6 @@
 - Project made using Python.    
 - The program uses pyperclip dependency for copying passwords.    
 - Once you have finished downloading it change directory in terminal to the HiderVault folder then use chmod '+x run.py and' ,'./run.py'   
-
 
 ## License
 - https://choosealicense.com/licenses/mit/
