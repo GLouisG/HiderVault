@@ -34,10 +34,10 @@ class Credentials:
   #    return cls.credentials_list
 
    @classmethod
-   def display_credentials(cls, owner):
+   def display_credentials(cls, c_owner):
         searlist = []
         for credential in cls.credentials_list:
-            if credential.owner == owner:
+            if credential.owner == c_owner:
                 searlist.append(credential)
         return searlist   
 
